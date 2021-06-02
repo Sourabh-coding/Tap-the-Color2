@@ -1,0 +1,175 @@
+<html><p id="mr" style="opacity:0;">Nan</p>
+
+
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+  <style>
+    #StartBtn{
+      width:150px;
+      height:75px;
+      border:1px solid black;
+      display:block;
+      border-radius:10px;
+      text-align:center;
+      background:#99ff99;
+    }
+    #StartPara{
+      font-family:Comfortaa, cursive;
+      position:relative;
+      top:10px;
+    }
+    #Box1{
+      width:172.5px;
+      height:172.5px;
+      background:white;
+    
+      border:1px solid black;
+    } 
+    #NxtBtn{
+            width:150px;
+      height:75px;
+      border:1px solid black;
+      display:none;
+      border-radius:10px;
+      text-align:center;
+      background:#ff9999;
+      position:relative;
+      top:0px;
+    }
+    #Nextpara{
+      font-family:Comfortaa, cursive;
+      position:relative;
+      top:10px;
+    }
+    #Box2{
+      width:172.5px;
+      height:172.5px;
+      background:white;
+      
+      border:1px solid black;
+    }
+    #Box3{
+      width:172.5px;
+      height:172.5px;
+      background:white;
+      
+      border:1px solid black;
+      position:relative;
+      top:-349px;
+      left:172.5px;
+    }
+    #Box4{
+      width:172.5px;
+      height:172.5px;
+      background:white;
+      border:1px solid black;
+      position:relative;
+      top:-349px;
+      left:172.5px;
+    }
+    #timer{
+      position:relative;
+      top:-345px;
+      left:155px;
+      font-family:Sans-Serif;
+    }
+  </style><script>
+  var score = 0;
+    function StartGame(){
+      var MR = Math.floor(Math.random() * 4) + 1;
+      document.getElementById("mr").innerHTML = MR;
+      document.getElementById("StartBtn").style.display = "none";
+      document.getElementById("NxtBtn").style.display = "block";
+      
+      
+      
+      var timer = 30;
+      var counter = setInterval( () => {
+        timer -= 1;
+        document.getElementById("timer").innerHTML = timer;
+      }, 1000);
+      setTimeout( () => {
+        clearInterval(counter);
+        alert("Game Over Your score " + score);
+        location.reload();
+        document.getElementById("StartBtn").style.display = "block";
+        document.getElementById("NxtBtn").style.display = "none";
+      }, 30000);
+    }
+    function Nxt(){
+            var MR = Math.floor(Math.random() * 4) + 1;
+      document.getElementById("mr").innerHTML = MR;
+      console.log(MR);
+      if(MR == 4){
+        document.getElementById("Box4").style.backgroundColor = "red";
+        setTimeout( () => {
+      document.getElementById("Box4").style.backgroundColor = "white";
+        }, 500);
+      } else if(MR == 3){
+                document.getElementById("Box3").style.backgroundColor = "red";
+        setTimeout( () => {
+      document.getElementById("Box3").style.backgroundColor = "white";
+        }, 500);
+      } else if(MR == 2){
+                document.getElementById("Box2").style.backgroundColor = "red";
+        setTimeout( () => {
+      document.getElementById("Box2").style.backgroundColor = "white";
+        }, 500);
+      } else if(MR == 1){
+                document.getElementById("Box1").style.backgroundColor = "red";
+        setTimeout( () => {
+      document.getElementById("Box1").style.backgroundColor = "white";
+        }, 500);
+      }
+    }
+
+    function B4(){
+      var x = document.getElementById("Box4");
+      if(x.style.backgroundColor == "red"){
+      score++;
+      document.getElementById("score").innerHTML = "Score." + score;
+        document.getElementById("wrong").style.opacity = "1";
+        
+      } 
+    } 
+  function B3(){
+    var x = document.getElementById("Box3");
+    if(x.style.backgroundColor == "red"){
+      score++;
+      document.getElementById("score").innerHTML = "Score." + score;
+              document.getElementById("wrong").style.opacity = "1";
+        
+    } 
+  }
+ 
+    function B2(){
+          var x = document.getElementById("Box2");
+    if(x.style.backgroundColor == "red"){
+              score++;
+      document.getElementById("score").innerHTML = "Score." + score;
+              document.getElementById("wrong").style.opacity = "1";
+        
+    } 
+    }
+        function B1(){
+          var x = document.getElementById("Box1");
+    if(x.style.backgroundColor == "red"){
+              score++;
+      document.getElementById("score").innerHTML = "Score." + score;
+              document.getElementById("wrong").style.opacity = "1";
+        
+    } 
+    }
+  </script>
+  <center><div id="NxtBtn" onclick="Nxt();"><font id="Nextpara" size="8">Next!</font></div></center>
+  <center><div id="StartBtn" onclick="StartGame();">
+    <font id="StartPara" size="8">Start!</font>
+  </div></center><br>
+  <br><div id="Box1" onclick="B1();"></div>
+  <div id="Box2" onclick="B2();"></div>
+  <div id="Box3" onclick="B3();"></div>
+  <div id="Box4" onclick="B4();"></div>
+<font id="timer" size="10">30</font>
+
+<font style="position:relative; top:-350px; left:-30px;" size="5" id="score" color="#00ff26">Score.0</font>
+</html>
